@@ -3,12 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Challenge - 2</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Challenge 2</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <header>
-      <h1>My Website</h1>
+    <header class="header">
+      <div class="container header-wrapper">
+        <h1 class="logo">Tech.</h1>
+
+        <nav class="navbar" id="navbar">
+          <ul class="nav-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Our Work</a></li>
+            <li><a href="#">Team</a></li>
+          </ul>
+          <a href="#" class="btn">Contact Us</a>
+        </nav>
+
+        <div class="hamburger" id="hamburgerBtn">☰</div>
+      </div>
     </header>
+
+    <section class="hero">
+      <div class="container hero-wrapper">
+        <div class="hero-left">
+          <h2 class="display-2xl">Build with the <span>Future.</span></h2>
+
+          <p class="text-lg">
+            From building sleek websites and mobile apps to integrating AI
+            solutions, we help brands turn ideas into powerful digital
+            experiences that connect, engage, and scale.
+          </p>
+
+          <a href="#" class="btn btn-large">Let’s Talk</a>
+        </div>
+
+        <div class="hero-right">
+          <img src="./assets/images/hand.png" alt="phone" />
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const hamburgerBtn = document.getElementById('hamburgerBtn');
+      const navbar = document.getElementById('navbar');
+
+      hamburgerBtn.addEventListener('click', () => {
+        navbar.classList.toggle('show');
+      });
+    </script>
   </body>
 </html>
