@@ -4,11 +4,27 @@
   box-sizing: border-box;
 }
 
+#menu-toggle {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 :root {
   --primary: #421abc;
   --text: #fdfdfd;
   --muted: #717680;
   --bg: #000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 body {
@@ -120,7 +136,6 @@ body {
 .hero {
   display: flex;
   justify-content: center;
-  background: var(--bg);
 }
 
 .hero-wrapper {
@@ -158,14 +173,12 @@ body {
 
 .hero-right img {
   max-width: 500px;
-  width: 100%;
-  height: auto;
 }
 
 .hamburger {
   background: none;
   border: none;
-  color: white;
+  color: var(--text);
   display: none;
   margin-left: auto;
   font-size: 24px;
@@ -179,19 +192,39 @@ body {
 #ourwork,
 #team,
 #contactus {
-  scroll-margin-top: 50px;
+  scroll-margin-top: 65px;
+}
+
+@media (max-width: 768px) {
+  .about,
+  .services,
+  #ourwork,
+  #team,
+  #contactus {
+    scroll-margin-top: 40px;
+  }
+}
+
+.about h2,
+.services h2,
+.work h2,
+.team h2 {
+  font-size: 42px;
+  color: var(--text);
+}
+
+.about,
+.services {
+  text-align: center;
 }
 
 /* WHO WE ARE */
 .about {
   padding: 80px 20px;
-  text-align: center;
 }
 
 .about h2 {
-  font-size: 42px;
   margin-bottom: 24px;
-  color: var(--text);
 }
 
 .about-text {
@@ -211,12 +244,9 @@ body {
 /* WHAT WE DO */
 .services {
   padding: 80px 20px;
-  text-align: center;
 }
 
 .services h2 {
-  font-size: 42px;
-  color: var(--text);
   margin-bottom: 15px;
 }
 
@@ -264,14 +294,17 @@ body {
 
 /* OUR WORK */
 .work {
-  padding: 90px 20px;
   text-align: center;
 }
 
-.work h2 {
-  font-size: 42px;
-  color: var(--text);
+.work h2,
+.team h2 {
   margin-bottom: 14px;
+}
+
+.work,
+.team {
+  padding: 90px 20px;
 }
 
 .work-subtitle {
@@ -295,7 +328,6 @@ body {
 .work-card img {
   width: 100%;
   border-radius: 12px;
-  display: block;
   transition: 0.3s ease;
 }
 
@@ -313,15 +345,7 @@ body {
 
 /* TEAM */
 .team {
-  padding: 90px 20px;
   text-align: center;
-  background: var(--bg);
-}
-
-.team h2 {
-  font-size: 42px;
-  color: var(--text);
-  margin-bottom: 14px;
 }
 
 .team-subtitle {
@@ -348,7 +372,6 @@ body {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
-  display: block;
   margin: 0 auto 18px;
   transition: 0.3s ease;
 }
@@ -375,7 +398,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--bg);
 }
 
 .contact-box {
@@ -451,15 +473,14 @@ textarea {
 }
 
 footer {
-  position: relative;
   padding: 18px;
   color: var(--muted);
   font-size: 16px;
   text-align: center;
-  z-index: 1;
 }
 
 /* Tablet @media (max-width:768px)*/
+
 /* Navbar dan Hero */
 @media (max-width: 768px) {
   .container {
@@ -495,7 +516,7 @@ footer {
     transition: all 0.3s ease;
   }
 
-  .navbar.show {
+  #menu-toggle:checked ~ .navbar {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -556,31 +577,36 @@ footer {
   }
 
   .hero-right img {
-    width: 308.85px;
-    height: 419.77px;
+    max-width: 308px;
+    width: 100%;
+    height: auto;
   }
-}
 
-/* About dan Services*/
-@media (max-width: 768px) {
+  /* Heading semua section */
+  .about h2,
+  .services h2,
+  .work h2,
+  .team h2 {
+    font-size: 32px;
+  }
+
+  /* About dan Services*/
   .about {
     padding: 60px 20px;
   }
 
   .about h2 {
-    font-size: 32px;
-    color: var(--text);
     margin-bottom: 15px;
   }
 
-  .about p {
+  .about-text {
     font-size: 16px;
     max-width: 320px;
     line-height: 1.6;
     color: var(--text);
   }
 
-  .about p span {
+  .about-text span {
     color: var(--muted);
   }
 
@@ -589,9 +615,7 @@ footer {
   }
 
   .services h2 {
-    font-size: 32px;
     margin-bottom: 12px;
-    color: var(--text);
   }
 
   .services .subtitle {
@@ -627,16 +651,10 @@ footer {
     font-size: 14px;
     line-height: 1.5;
   }
-}
 
-/*Our Work*/
-@media (max-width: 768px) {
+  /*Our Work*/
   .work {
     padding: 70px 20px;
-  }
-
-  .work h2 {
-    font-size: 32px;
   }
 
   .work-subtitle {
@@ -653,17 +671,14 @@ footer {
     font-size: 14px;
     text-align: left;
   }
-}
 
-/*Team*/
-@media (max-width: 768px) {
+  /*Team*/
   .team {
     padding: 70px 20px;
     text-align: center;
   }
 
   .team h2 {
-    font-size: 32px;
     margin-bottom: 10px;
   }
 
@@ -686,12 +701,13 @@ footer {
   }
 
   .team-card img {
-    width: 160px;
-    height: 160px;
+    max-width: 160px;
+    width: 100%;
     object-fit: cover;
     border-radius: 50%;
     display: block;
     margin: 0 auto 14px;
+    aspect-ratio: 1 / 1;
   }
 
   .team-card h3 {
@@ -707,10 +723,8 @@ footer {
     display: block;
     line-height: 1.4;
   }
-}
 
-/*Contact Us dan Footer*/
-@media (max-width: 768px) {
+  /*Contact Us dan Footer*/
   .contact-box {
     max-width: 90%;
     padding: 30px;
@@ -725,6 +739,11 @@ footer {
     margin-bottom: 30px;
   }
 
+  .contact-section button {
+    font-size: 16px;
+    padding: 14px;
+  }
+
   input,
   textarea {
     padding: 13px;
@@ -733,11 +752,6 @@ footer {
 
   textarea {
     height: 120px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 14px;
   }
 
   footer {
@@ -816,21 +830,25 @@ footer {
     height: auto;
     max-width: 100%;
   }
-}
 
-/* About dan Services */
-@media (max-width: 480px) {
+  /* Heading semua section */
+  .about h2,
+  .services h2,
+  .work h2,
+  .team h2 {
+    font-size: 26px;
+  }
+
+  /* About dan Services */
   .about {
     padding: 50px 15px;
-    text-align: center;
   }
 
   .about h2 {
-    font-size: 26px;
     margin-bottom: 12px;
   }
 
-  .about p {
+  .about-text {
     font-size: 14px;
     max-width: 100%;
     line-height: 1.6;
@@ -838,11 +856,9 @@ footer {
 
   .services {
     padding: 50px 15px;
-    text-align: center;
   }
 
   .services h2 {
-    font-size: 26px;
     margin-bottom: 10px;
   }
 
@@ -878,16 +894,13 @@ footer {
     font-size: 13px;
     line-height: 1.5;
   }
-}
 
-/* Our Work */
-@media (max-width: 480px) {
+  /* Our Work */
   .work {
     padding: 55px 15px;
   }
 
   .work h2 {
-    font-size: 26px;
     text-align: center;
   }
 
@@ -911,16 +924,10 @@ footer {
     line-height: 1.5;
     text-align: left;
   }
-}
 
-/* Team */
-@media (max-width: 480px) {
+  /* Team */
   .team {
     padding: 55px 15px;
-  }
-
-  .team h2 {
-    font-size: 26px;
   }
 
   .team-subtitle {
@@ -935,8 +942,9 @@ footer {
   }
 
   .team-card img {
-    width: 130px;
-    height: 130px;
+    max-width: 130px;
+    width: 100%;
+    aspect-ratio: 1/1;
   }
 
   .team-card h3 {
@@ -946,10 +954,8 @@ footer {
   .team-card span {
     font-size: 11px;
   }
-}
 
-/* Contact Us dan Footer */
-@media (max-width: 480px) {
+  /* Contact Us dan Footer */
   .contact-section {
     padding: 20px 15px;
   }
@@ -968,6 +974,12 @@ footer {
     margin-bottom: 25px;
   }
 
+  .contact-section button {
+    font-size: 15px;
+    padding: 13px;
+    border-radius: 25px;
+  }
+
   label {
     font-size: 13px;
   }
@@ -980,12 +992,6 @@ footer {
 
   textarea {
     height: 110px;
-  }
-
-  button {
-    font-size: 15px;
-    padding: 13px;
-    border-radius: 25px;
   }
 
   footer {
